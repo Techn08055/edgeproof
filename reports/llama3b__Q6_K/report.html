@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8"><title>EdgeProof report</title>
+<style>body{font:14px/1.5 system-ui,sans-serif;max-width:1100px;margin:24px auto;padding:0 16px;color:#1f2328}
+table{border-collapse:collapse;width:100%;margin:8px 0}td,th{border:1px solid #d0d7de;padding:4px 8px;text-align:left;vertical-align:top}
+th{background:#f6f8fa}code{background:#f6f8fa;padding:0 3px}</style></head><body>
+<h1>EdgeProof report</h1>
+<p>Suite <code>agent-30</code> (30 tasks × 3 repeats) ·
+reference <code>llama3b-Q8_0.gguf</code> pass rate 53.3%</p>
+<table><tr><th>candidate</th><th>MB</th><th>verdict</th><th>pass rate</th><th>Δ vs ref</th><th>regressions</th>
+<th>unrequested actions</th><th>invalid JSON</th><th>p95 ms</th><th>VRAM MB</th></tr><tr><td>llama3b-Q6_K.gguf</td><td>2521</td><td><b style='color:#9a6700'>REVIEW</b></td><td>56.7%</td><td>-3.3%</td><td>0</td><td>3</td><td>6</td><td>790.1</td><td>3148</td></tr></table>
+<h2>llama3b-Q6_K.gguf — <span style='color:#9a6700'>REVIEW</span></h2><ul><li>REVIEW: <code>unrequested_actions</code> = 3 (max 0)</li></ul><p>No regressions vs reference.</p>
+<h2>Reference failures</h2><ul><li><code>s-docs</code>: Look up the documentation on CUDA streams. → search_docs {&quot;query&quot;: &quot;CUDA streams&quot;, &quot;limit&quot;: &quot;10&quot;}</li><li><code>s-ratelimit</code>: What do our docs say about the rate limit? → search_docs {&quot;query&quot;: &quot;rate limit&quot;, &quot;limit&quot;: &quot;10&quot;}</li><li><code>a-limit-2</code>: Search the docs for &#x27;memory leak&#x27;, top 2 results only. → search_docs {&quot;query&quot;: &quot;memory leak&quot;, &quot;limit&quot;: &quot;2&quot;}</li><li><code>a-limit-10</code>: Find 10 doc pages mentioning &#x27;quantization&#x27;. → search_docs {&quot;query&quot;: &quot;quantization&quot;, &quot;limit&quot;: &quot;10&quot;}</li><li><code>a-percent</code>: What is 7.5% of 2400? → calculator {&quot;expression&quot;: &quot;7.5% * 2400&quot;}</li><li><code>n-greet</code>: Good morning! → calculator {&quot;expression&quot;: &quot;1+2*3&quot;}</li><li><code>n-poem</code>: Write a two-line poem about the monsoon. → calculator {&quot;expression&quot;: &quot;Poem about monsoon&quot;}</li><li><code>n-explain</code>: Explain in one sentence what a GPU is. → __malformed__ null</li><li><code>n-negation</code>: Don&#x27;t open a ticket. Just tell me how I would report a bug. → create_ticket {&quot;title&quot;: &quot;Bug Report&quot;, &quot;priority&quot;: &quot;high&quot;}</li><li><code>n-thanks</code>: Thanks, that&#x27;s all for now. → calculator {&quot;expression&quot;: &quot;2+2&quot;}</li><li><code>c-weather-convert</code>: Get the temperature in Kochi in celsius, then use the calculator to convert it to fahrenheit. → __malformed__ null</li><li><code>c-docs-then-ticket</code>: Search the docs for &#x27;driver crash&#x27;. If nothing is found, open a medium priority ticket titled &#x27;Driver crash undocumented&#x27;. → __malformed__ null</li><li><code>c-docs-then-file</code>: Search the docs for &#x27;install guide&#x27;, then read the file the result points to. → search_docs {&quot;query&quot;: &quot;install guide&quot;, &quot;limit&quot;: &quot;1&quot;}</li><li><code>c-docs-found-no-ticket</code>: Search the docs for &#x27;reset password&#x27;. Only open a ticket if nothing is found. → search_docs {&quot;query&quot;: &quot;reset password&quot;, &quot;limit&quot;: &quot;0&quot;}</li></ul>
+<h2>Environment</h2><pre>{
+  &quot;gpu&quot;: &quot;NVIDIA GeForce RTX 4050 Laptop GPU, 580.178.04, 6141 MiB&quot;,
+  &quot;llama_cpp&quot;: &quot;a691b23&quot;,
+  &quot;python&quot;: &quot;3.12.3&quot;,
+  &quot;host&quot;: &quot;Linux-7.0.0-42-generic-x86_64-with-glibc2.39&quot;,
+  &quot;time&quot;: &quot;2026-11-08T17:18:07&quot;
+}</pre>
+</body></html>

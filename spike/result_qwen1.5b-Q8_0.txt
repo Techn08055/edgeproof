@@ -1,0 +1,12 @@
+PASS  want=calculator got=calculator args={'expression': '17 * 23'}  | What is 17 * 23?
+PASS  want=get_weather got=get_weather args={'city': 'Kochi', 'unit': 'fahrenheit'}  | What's the weather in Kochi in fahrenheit?
+PASS  want=search_docs got=search_docs args={'query': 'INT8 calibration', 'limit': 3}  | Find the docs about INT8 calibration, just 3 results.
+PASS  want=create_ticket got=create_ticket args={'title': 'GPU OOM on startup', 'priority': 'high'}  | Open a high priority ticket titled 'GPU OOM on startup'.
+PASS  want=None got=None args={}  | Hi! How are you today?
+PASS  want=get_weather got=get_weather args={'city': 'Berlin', 'unit': 'celsius'}  | Is it raining in Berlin right now?
+FAIL  want=calculator got=calculator args={'expression': '1250 - 380 / 6'}  | Compute (1250 - 380) / 6
+PASS  want=create_ticket got=create_ticket args={'title': 'Login 500 error', 'priority': 'low'}  | The login page is broken, file a low priority ticket called 'Login 500 error'.
+PASS  want=None got=None args={}  | Write me a haiku about GPUs.
+PASS  want=search_docs got=search_docs args={'query': 'TensorRT plugin', 'limit': 5}  | Search our docs for 'TensorRT plugin' and return 5 hits.
+
+9/10 correct

@@ -1,0 +1,33 @@
+# Copy to .github/workflows/edgeproof.yml in your agent's repo.
+# Blocks a PR that changes the model (e.g. bumps models.lock to a new quant) when EdgeProof says FAIL.
+# Needs a self-hosted runner with an NVIDIA GPU and llama.cpp built (GitHub-hosted runners have no GPU).
+name: edgeproof
+on:
+  pull_request:
+    paths: ["models.lock", "agent/tools/**", "edgeproof/suite.yaml"]
+
+jobs:
+  gate:
+    runs-on: [self-hosted, gpu]
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install edgeproof            # or: pip install git+https://github.com/<you>/edgeproof
+      - name: Fetch reference + candidate models
+        run: |
+          # models.lock lines: reference=<url> / candidate=<url>; cached on the runner between jobs
+          mkdir -p ~/models
+          while IFS='=' read -r role url; do
+            f=~/models/$(basename "$url"); [ -f "$f" ] || curl -sSfL -o "$f" "$url"; echo "$role=$f" >> "$GITHUB_ENV"
+          done < models.lock
+      - name: EdgeProof gate
+        env:
+          EDGEPROOF_LLAMA_SERVER: /opt/llama.cpp/build/bin/llama-server
+        # exit 0 PASS, 1 REVIEW, 2 FAIL. Here REVIEW does not block; FAIL does.
+        run: |
+          set +e
+          edgeproof run edgeproof/suite.yaml --reference "$reference" --candidate "$candidate" \
+            --thresholds edgeproof/thresholds.yaml --cache ~/.edgeproof_cache --out edgeproof-report
+          rc=$?; [ $rc -eq 2 ] && exit 1 || exit 0
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with: {name: edgeproof-report, path: edgeproof-report/}

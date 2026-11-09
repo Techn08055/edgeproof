@@ -1,0 +1,20 @@
+[project]
+name = "edgeproof"
+version = "0.0.1"
+description = "PASS/REVIEW/FAIL gate for quantized local LLM agents: does your quant still call the right tools?"
+requires-python = ">=3.10"
+dependencies = ["pyyaml>=6", "jsonschema>=4"]
+license = { text = "MIT" }
+
+[project.scripts]
+edgeproof = "edgeproof.cli:main"
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["edgeproof"]
+
+[tool.setuptools.package-data]
+edgeproof = ["suites/*.yaml"]

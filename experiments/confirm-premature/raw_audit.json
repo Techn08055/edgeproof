@@ -1,0 +1,302 @@
+{
+ "qwen2.5-1.5b-instruct-fp16.gguf": [
+  {
+   "id": "kb-p1-1",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{\"name\": \"search_kb\", \"arguments\": {\"query\": \"refund window\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Checkout button unresponsive\", \"priority\": \"high\"}}\n</tool_call>"
+  },
+  {
+   "id": "stock-p5-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{\"name\": \"get_stock\", \"arguments\": {\"sku\": \"9024\"}}\n</tool_call>"
+  },
+  {
+   "id": "pay-p1-1",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "pay_invoice"
+   ],
+   "raw": "<tool_call>\n{\"name\": \"get_balance\", \"arguments\": {\"account\": \"facilities\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"pay_invoice\", \"arguments\": {\"invoice_id\": \"INV-3187\", \"account\": \"facilities\"}}\n</tool_call>"
+  },
+  {
+   "id": "kb-p2-1",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{\"name\": \"search_kb\", \"arguments\": {\"query\": \"refund window\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Checkout button unresponsive\", \"priority\": \"high\"}}\n</tool_call>"
+  },
+  {
+   "id": "pay-p1-2",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "pay_invoice"
+   ],
+   "raw": "<tool_call>\n{\"name\": \"get_balance\", \"arguments\": {\"account\": \"marketing\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"pay_invoice\", \"arguments\": {\"invoice_id\": \"INV-3562\", \"account\": \"marketing\"}}\n</tool_call>"
+  },
+  {
+   "id": "kb-p2-3",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{\"name\": \"search_kb\", \"arguments\": {\"query\": \"2FA recovery\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Duplicate order emails\", \"priority\": \"high\"}}\n</tool_call>"
+  },
+  {
+   "id": "pay-p1-4",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "pay_invoice"
+   ],
+   "raw": "<tool_call>\n{\"name\": \"get_balance\", \"arguments\": {\"account\": \"facilities\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"pay_invoice\", \"arguments\": {\"invoice_id\": \"INV-3254\", \"account\": \"facilities\"}}\n</tool_call>"
+  },
+  {
+   "id": "kb-p2-4",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{\"name\": \"search_kb\", \"arguments\": {\"query\": \"2FA recovery\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Stale search index\", \"priority\": \"medium\"}}\n</tool_call>"
+  },
+  {
+   "id": "pay-p4-3",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "pay_invoice"
+   ],
+   "raw": "<tool_call>\n{\"name\": \"get_balance\", \"arguments\": {\"account\": \"user_account\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"pay_invoice\", \"arguments\": {\"invoice_id\": \"INV-3409\", \"account\": \"user_account\", \"amount\": 2148}}\n</tool_call>"
+  },
+  {
+   "id": "pay-p5-1",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "pay_invoice"
+   ],
+   "raw": "<tool_call>\n{\"name\": \"pay_invoice\", \"arguments\": {\"invoice_id\": \"INV-3409\", \"account\": \"RESEARCH-BALANCE\"}}\n</tool_call>"
+  }
+ ],
+ "qwen1.5b-Q4_K_M.gguf": [
+  {
+   "id": "kb-p1-1",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"search_kb\", \"arguments\": {\"query\": \"refund window\"}}\n</tool_call>\n<tool_call>\n{{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Checkout button unresponsive\", \"priority\": \"high\"}}\n</tool_call>"
+  },
+  {
+   "id": "dup-p1-4",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"find_tickets\", \"arguments\": {\"query\": \"Wrong tax on invoices\"}}\n</tool_call>\n<tool_call>\n{{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Wrong tax on invoices\", \"priority\": \"high\"}}\n</tool_call>"
+  },
+  {
+   "id": "stock-p1-1",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"get_stock\", \"arguments\": {\"sku\": \"3350\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "svc-p1-3",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "restart_service"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"check_calendar\", \"arguments\": {\"date\": \"2023-10-05\"}}\n</tool_call>\n<tool_call>\n{{\"name\": \"restart_service\", \"arguments\": {\"service\": \"chat-relay\"}}\n</tool_call>"
+  },
+  {
+   "id": "cal-p1-1",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"check_calendar\", \"arguments\": {\"date\": \"2027-01-21\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "order-p2-1",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "issue_refund"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"issue_refund\", \"arguments\": {\"order_id\": \"ORD-63318\", \"amount\": null, \"status\": \"cancelled\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "cust-p1-3",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"lookup_customer\", \"arguments\": {\"email\": \"ravi@tailspin.test\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "pay-p1-1",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "pay_invoice"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"get_balance\", \"arguments\": {\"account\": \"facilities\"}}}}\n</tool_call>\n<tool_call>\n{{\"name\": \"pay_invoice\", \"arguments\": {\"invoice_id\": \"INV-3187\", \"account\": \"facilities\"}}\n</tool_call>"
+  },
+  {
+   "id": "kb-p1-2",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"search_kb\", \"arguments\": {\"query\": \"quota increase\"}}\n</tool_call>\n<tool_call>\n{{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Avatar upload fails\", \"priority\": \"medium\"}}\n</tool_call>"
+  },
+  {
+   "id": "dup-p2-1",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Session expires too fast\", \"priority\": \"low\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "stock-p1-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"get_stock\", \"arguments\": {\"sku\": \"4417\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "svc-p2-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"get_service_status\", \"arguments\": {\"service\": \"billing-api\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "cal-p1-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"check_calendar\", \"arguments\": {\"date\": \"2026-12-15\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "order-p2-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "issue_refund"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"issue_refund\", \"arguments\": {\"order_id\": \"ORD-60477\", \"amount\": 0, \"status\": \"cancelled\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "pay-p1-2",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "pay_invoice"
+   ],
+   "raw": "<tool_call>\n{\"name\": \"get_balance\", \"arguments\": {\"account\": \"marketing\"}}\n</tool_call>\n<tool_call>\n{\"name\": \"pay_invoice\", \"arguments\": {\"invoice_id\": \"INV-3562\", \"account\": \"marketing\"}}\n</tool_call>"
+  },
+  {
+   "id": "kb-p1-3",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"search_kb\", \"arguments\": {\"query\": \"IP allowlist\"}}\n</tool_call>"
+  },
+  {
+   "id": "dup-p2-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Wrong tax on invoices\", \"priority\": \"high\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "stock-p1-3",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"get_stock\", \"arguments\": {\"sku\": \"1186\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "cal-p1-3",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "schedule_meeting"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"check_calendar\", \"arguments\": {\"date\": \"2027-01-14\"}}\n</tool_call>\n<tool_call>\n{{\"name\": \"schedule_meeting\", \"arguments\": {\"date\": \"2027-01-14\", \"title\": \"Vendor Call\"}}\n</tool_call>"
+  },
+  {
+   "id": "order-p2-3",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "issue_refund"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"issue_refund\", \"arguments\": {\"order_id\": \"ORD-60477\", \"amount\": 0, \"status\": \"cancelled\"}}}}\n</tool_call>"
+  }
+ ],
+ "qwen1.5b-imat-Q4_K_M.gguf": [
+  {
+   "id": "kb-p2-1",
+   "n_tool_call_blocks": 2,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Checkout button unresponsive\", \"priority\": \"high\"}}}}\n</tool_call>\n<tool_call>\n{{\"name\": \"search_kb\", \"arguments\": {\"query\": \"refund window\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "dup-p2-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"find_tickets\", \"arguments\": {\"query\": \"Wrong tax on invoices\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "stock-p2-1",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "reorder_stock"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"reorder_stock\", \"arguments\": {\"sku\": \"SKU-6642\", \"quantity\": 200}}}}\n</tool_call>"
+  },
+  {
+   "id": "cust-p5-1",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"lookup_customer\", \"arguments\": {\"email\": \"ken@litware.test\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "pay-p2-1",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "pay_invoice"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"pay_invoice\", \"arguments\": {\"invoice_id\": \"INV-3254\", \"account\": \"research\"}}\n</tool_call>"
+  },
+  {
+   "id": "kb-p2-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "create_ticket"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"create_ticket\", \"arguments\": {\"title\": \"Footer link 404\", \"priority\": \"low\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "dup-p2-4",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"find_tickets\", \"arguments\": {\"query\": \"Duplicate order emails\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "stock-p2-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "reorder_stock"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"reorder_stock\", \"arguments\": {\"sku\": \"SKU-5519\", \"quantity\": 100}}}}\n</tool_call>"
+  },
+  {
+   "id": "cust-p5-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [],
+   "raw": "<tool_call>\n{{\"name\": \"lookup_customer\", \"arguments\": {\"email\": \"maya@northwind.test\"}}}}\n</tool_call>"
+  },
+  {
+   "id": "pay-p2-2",
+   "n_tool_call_blocks": 1,
+   "side_effect_named": [
+    "pay_invoice"
+   ],
+   "raw": "<tool_call>\n{{\"name\": \"pay_invoice\", \"arguments\": {\"invoice_id\": \"INV-3187\", \"account\": \"facilities\"}}\n</tool_call>"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" font-family="system-ui,sans-serif" font-size="12">
+<rect width="100%" height="100%" fill="white"/>
+<text x="360.0" y="24" text-anchor="middle" font-size="15" font-weight="600">Agent tool-call pass rate vs VRAM</text>
+<line x1="60" x2="660" y1="360.0" y2="360.0" stroke="#eee"/><text x="52" y="364.0" text-anchor="end">0%</text>
+<line x1="60" x2="660" y1="300.0" y2="300.0" stroke="#eee"/><text x="52" y="304.0" text-anchor="end">20%</text>
+<line x1="60" x2="660" y1="240.0" y2="240.0" stroke="#eee"/><text x="52" y="244.0" text-anchor="end">40%</text>
+<line x1="60" x2="660" y1="180.0" y2="180.0" stroke="#eee"/><text x="52" y="184.0" text-anchor="end">60%</text>
+<line x1="60" x2="660" y1="120.0" y2="120.0" stroke="#eee"/><text x="52" y="124.0" text-anchor="end">80%</text>
+<line x1="60" x2="660" y1="60.0" y2="60.0" stroke="#eee"/><text x="52" y="64.0" text-anchor="end">100%</text>
+<text x="60.0" y="378" text-anchor="middle">0 GB</text>
+<text x="231.543444270717" y="378" text-anchor="middle">1 GB</text>
+<text x="403.086888541434" y="378" text-anchor="middle">2 GB</text>
+<text x="574.6303328121509" y="378" text-anchor="middle">3 GB</text>
+<text x="360.0" y="408" text-anchor="middle">peak VRAM (llama-server, nvidia-smi)</text>
+<polyline fill="none" stroke="#0969da" stroke-width="2" points="240.58968058968057,120.0 266.38820638820636,136.68 311.9544337726155,133.32 371.59258431985705,133.32 605.4545454545454,140.01000000000002"/>
+<circle cx="240.58968058968057" cy="120.0" r="4" fill="#0969da"/><text x="246.58968058968057" y="114.0" fill="#0969da">Q3_K_M</text>
+<circle cx="266.38820638820636" cy="136.68" r="4" fill="#0969da"/><text x="272.38820638820636" y="130.68" fill="#0969da">Q4_K_M</text>
+<circle cx="311.9544337726155" cy="133.32" r="4" fill="#0969da"/><text x="317.9544337726155" y="127.32" fill="#0969da">Q6_K</text>
+<circle cx="371.59258431985705" cy="133.32" r="4" fill="#0969da"/><text x="377.59258431985705" y="127.32" fill="#0969da">Q8_0</text>
+<circle cx="605.4545454545454" cy="140.01000000000002" r="4" fill="#0969da"/><text x="611.4545454545454" y="134.01000000000002" fill="#0969da">F16</text>
+<rect x="510" y="40" width="10" height="10" fill="#0969da"/><text x="525" y="49">qwen1.5b-v2</text>
+</svg>

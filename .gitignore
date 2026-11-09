@@ -1,0 +1,12 @@
+models/
+llama.cpp/
+.edgeproof_cache/
+*.gguf
+*.kld
+__pycache__/
+*.egg-info/
+build/
+discovery/
+PLAN.md
+*.log
+EXPERT_*_PROMPT.md

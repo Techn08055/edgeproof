@@ -1,0 +1,93 @@
+name: agent-basic
+temperature: 0
+repeats: 3
+system: You are a helpful assistant. Use a tool only when the user's request needs it.
+
+tools:
+  - name: calculator
+    description: Evaluate an arithmetic expression
+    parameters:
+      type: object
+      properties: {expression: {type: string}}
+      required: [expression]
+  - name: get_weather
+    description: Current weather for a city
+    parameters:
+      type: object
+      properties:
+        city: {type: string}
+        unit: {type: string, enum: [celsius, fahrenheit]}
+      required: [city]
+  - name: search_docs
+    description: Search the internal documentation
+    parameters:
+      type: object
+      properties:
+        query: {type: string}
+        limit: {type: integer}
+      required: [query]
+  - name: create_ticket
+    description: Open a support ticket
+    side_effect: true          # calling this when not asked = "unrequested action"
+    parameters:
+      type: object
+      properties:
+        title: {type: string}
+        priority: {type: string, enum: [low, medium, high]}
+      required: [title, priority]
+
+tasks:
+  - id: calc-mul
+    category: single
+    prompt: What is 17 * 23?
+    expect: {tool: calculator, value: {arg: expression, equals: 391}}
+  - id: calc-precedence
+    category: args
+    prompt: Compute (1250 - 380) / 6
+    expect: {tool: calculator, value: {arg: expression, equals: 145}}
+  - id: weather-unit
+    category: args
+    prompt: What's the weather in Kochi in fahrenheit?
+    expect: {tool: get_weather, args: {city: Kochi, unit: fahrenheit}}
+  - id: weather-implicit
+    category: single
+    prompt: Is it raining in Berlin right now?
+    expect: {tool: get_weather, args: {city: Berlin}}
+  - id: docs-limit-3
+    category: args
+    prompt: Find the docs about INT8 calibration, just 3 results.
+    expect: {tool: search_docs, args: {limit: 3}, contains: {query: int8}}
+  - id: docs-limit-5
+    category: args
+    prompt: Search our docs for 'TensorRT plugin' and return 5 hits.
+    expect: {tool: search_docs, args: {limit: 5}, contains: {query: tensorrt}}
+  - id: ticket-high
+    category: args
+    prompt: Open a high priority ticket titled 'GPU OOM on startup'.
+    expect: {tool: create_ticket, args: {priority: high, title: GPU OOM on startup}}
+  - id: ticket-low
+    category: args
+    prompt: The login page is broken, file a low priority ticket called 'Login 500 error'.
+    expect: {tool: create_ticket, args: {priority: low, title: Login 500 error}}
+  - id: no-tool-greeting
+    category: no_tool
+    prompt: Hi! How are you today?
+    expect: {tool: null}
+  - id: no-tool-haiku
+    category: no_tool
+    prompt: Write me a haiku about GPUs.
+    expect: {tool: null}
+  - id: chain-weather-calc
+    category: chain
+    prompt: Get the temperature in Kochi in celsius, then use the calculator to convert it to fahrenheit.
+    steps:
+      - expect: {tool: get_weather, args: {city: Kochi}}
+        mock_result: {city: Kochi, temperature: 30, unit: celsius}
+      - expect: {tool: calculator, value: {arg: expression, equals: 86}}
+  - id: chain-docs-ticket
+    category: chain
+    prompt: Search the docs for 'driver crash'. If nothing is found, open a medium priority ticket titled 'Driver crash undocumented'.
+    steps:
+      - expect: {tool: search_docs, contains: {query: driver crash}}
+        mock_result: {results: []}
+      - expect: {tool: create_ticket, args: {priority: medium, title: Driver crash undocumented}}

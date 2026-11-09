@@ -1,0 +1,6 @@
+family,p95_ms,pass_rate,quant,regressions,role,size_mb,unrequested_actions,verdict,vram_mb,cat_args,cat_chain,cat_no_tool,cat_single
+qwen1.5b-v2,948.2,0.7333,F16,0,reference,3395.5,0,REF,3256,0.8,0.2,0.8,0.9
+qwen1.5b-v2,554.6,0.7556,Q8_0,0,candidate,1806.8,0,REVIEW,1860,0.867,0.2,0.8,0.9
+qwen1.5b-v2,498.2,0.7556,Q6_K,0,candidate,1396.3,0,REVIEW,1504,0.867,0.2,0.8,0.9
+qwen1.5b-v2,491.0,0.7444,Q4_K_M,1,candidate,1065.6,4,FAIL,1232,0.9,0.2,0.8,0.833
+qwen1.5b-v2,812.4,0.8,Q3_K_M,0,candidate,881.6,0,PASS,1078,0.9,0.2,0.8,1.0

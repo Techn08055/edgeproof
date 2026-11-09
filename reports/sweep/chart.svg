@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" font-family="system-ui,sans-serif" font-size="12">
+<rect width="100%" height="100%" fill="white"/>
+<text x="360.0" y="24" text-anchor="middle" font-size="15" font-weight="600">Agent tool-call pass rate vs VRAM</text>
+<line x1="60" x2="660" y1="360.0" y2="360.0" stroke="#eee"/><text x="52" y="364.0" text-anchor="end">0%</text>
+<line x1="60" x2="660" y1="300.0" y2="300.0" stroke="#eee"/><text x="52" y="304.0" text-anchor="end">20%</text>
+<line x1="60" x2="660" y1="240.0" y2="240.0" stroke="#eee"/><text x="52" y="244.0" text-anchor="end">40%</text>
+<line x1="60" x2="660" y1="180.0" y2="180.0" stroke="#eee"/><text x="52" y="184.0" text-anchor="end">60%</text>
+<line x1="60" x2="660" y1="120.0" y2="120.0" stroke="#eee"/><text x="52" y="124.0" text-anchor="end">80%</text>
+<line x1="60" x2="660" y1="60.0" y2="60.0" stroke="#eee"/><text x="52" y="64.0" text-anchor="end">100%</text>
+<text x="60.0" y="378" text-anchor="middle">0 GB</text>
+<text x="203.58494975461556" y="378" text-anchor="middle">1 GB</text>
+<text x="347.16989950923113" y="378" text-anchor="middle">2 GB</text>
+<text x="490.75484926384667" y="378" text-anchor="middle">3 GB</text>
+<text x="634.3397990184623" y="378" text-anchor="middle">4 GB</text>
+<text x="360.0" y="408" text-anchor="middle">peak VRAM (llama-server, nvidia-smi)</text>
+<polyline fill="none" stroke="#0969da" stroke-width="2" points="194.6108903949521,320.01 210.31549427436318,230.01 238.639869128301,243.32999999999998 278.74269689179715,323.34 436.3496143958869,290.01"/>
+<circle cx="194.6108903949521" cy="320.01" r="4" fill="#0969da"/><text x="200.6108903949521" y="314.01" fill="#0969da">Q3_K_M</text>
+<circle cx="210.31549427436318" cy="230.01" r="4" fill="#0969da"/><text x="216.31549427436318" y="224.01" fill="#0969da">Q4_K_M</text>
+<circle cx="238.639869128301" cy="243.32999999999998" r="4" fill="#0969da"/><text x="244.639869128301" y="237.32999999999998" fill="#0969da">Q6_K</text>
+<circle cx="278.74269689179715" cy="323.34" r="4" fill="#0969da"/><text x="284.74269689179715" y="317.34" fill="#0969da">Q8_0</text>
+<circle cx="436.3496143958869" cy="290.01" r="4" fill="#0969da"/><text x="442.3496143958869" y="284.01" fill="#0969da">F16</text>
+<rect x="510" y="40" width="10" height="10" fill="#0969da"/><text x="525" y="49">llama1b</text>
+<polyline fill="none" stroke="#cf222e" stroke-width="2" points="390.9184388875906,210.0 418.40149567656,200.01 501.41154475344706,189.99 605.4545454545454,200.01"/>
+<circle cx="390.9184388875906" cy="210.0" r="4" fill="#cf222e"/><text x="396.9184388875906" y="204.0" fill="#cf222e">Q3_K_L</text>
+<circle cx="418.40149567656" cy="200.01" r="4" fill="#cf222e"/><text x="424.40149567656" y="194.01" fill="#cf222e">Q4_K_M</text>
+<circle cx="501.41154475344706" cy="189.99" r="4" fill="#cf222e"/><text x="507.41154475344706" y="183.99" fill="#cf222e">Q6_K</text>
+<circle cx="605.4545454545454" cy="200.01" r="4" fill="#cf222e"/><text x="611.4545454545454" y="194.01" fill="#cf222e">Q8_0</text>
+<rect x="510" y="58" width="10" height="10" fill="#cf222e"/><text x="525" y="67">llama3b</text>
+<polyline fill="none" stroke="#1a7f37" stroke-width="2" points="211.15681233933162,120.0 232.75064267352187,123.32999999999998 270.8903949520916,123.32999999999998 320.8086001402197,123.32999999999998 516.5552699228792,129.98999999999998"/>
+<circle cx="211.15681233933162" cy="120.0" r="4" fill="#1a7f37"/><text x="217.15681233933162" y="114.0" fill="#1a7f37">Q3_K_M</text>
+<circle cx="232.75064267352187" cy="123.32999999999998" r="4" fill="#1a7f37"/><text x="238.75064267352187" y="117.32999999999998" fill="#1a7f37">Q4_K_M</text>
+<circle cx="270.8903949520916" cy="123.32999999999998" r="4" fill="#1a7f37"/><text x="276.8903949520916" y="117.32999999999998" fill="#1a7f37">Q6_K</text>
+<circle cx="320.8086001402197" cy="123.32999999999998" r="4" fill="#1a7f37"/><text x="326.8086001402197" y="117.32999999999998" fill="#1a7f37">Q8_0</text>
+<circle cx="516.5552699228792" cy="129.98999999999998" r="4" fill="#1a7f37"/><text x="522.5552699228792" y="123.98999999999998" fill="#1a7f37">F16</text>
+<rect x="510" y="76" width="10" height="10" fill="#1a7f37"/><text x="525" y="85">qwen1.5b</text>
+</svg>

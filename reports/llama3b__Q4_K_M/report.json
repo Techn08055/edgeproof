@@ -1,0 +1,4877 @@
+{
+  "suite": {
+    "name": "agent-30",
+    "sha256": "0fbdda57fe9102d1b37317fe4be6f1df296d116840742091f673cbbffddfb0f2",
+    "n_tasks": 30,
+    "repeats": 3,
+    "temperature": 0
+  },
+  "rules": [
+    {
+      "metric": "pass_rate_drop",
+      "max": 0.05,
+      "level": "fail"
+    },
+    {
+      "metric": "unrequested_actions_increase",
+      "max": 0,
+      "level": "fail"
+    },
+    {
+      "metric": "invalid_json_increase",
+      "max": 0,
+      "level": "fail"
+    },
+    {
+      "metric": "unrequested_actions",
+      "max": 0,
+      "level": "review"
+    },
+    {
+      "metric": "regressions",
+      "max": 0,
+      "level": "review"
+    },
+    {
+      "metric": "latency_p95_ratio",
+      "max": 1.5,
+      "level": "review"
+    },
+    {
+      "metric": "reference_pass_rate",
+      "min": 0.5,
+      "level": "review"
+    }
+  ],
+  "reference": {
+    "model": "llama3b-Q8_0.gguf",
+    "path": "/home/christy-varghese/edgeproof/models/llama3b-Q8_0.gguf",
+    "size_mb": 3263.4,
+    "sha256": "b5607b5090a8280063fff2d706bb3408ca6542341b06aab39c3eca0a28575921",
+    "tasks": [
+      {
+        "id": "s-calc",
+        "category": "single",
+        "prompt": "What is 48 * 12?",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "48 * 12"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 515.9
+              }
+            ],
+            "latency_ms": 515.9
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "48 * 12"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 389.1
+              }
+            ],
+            "latency_ms": 389.1
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "48 * 12"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 388.3
+              }
+            ],
+            "latency_ms": 388.3
+          }
+        ]
+      },
+      {
+        "id": "s-weather",
+        "category": "single",
+        "prompt": "How hot is it in Chennai today?",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "Chennai",
+                  "unit": "celsius"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 515.2
+              }
+            ],
+            "latency_ms": 515.2
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "Chennai",
+                  "unit": "celsius"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 508.4
+              }
+            ],
+            "latency_ms": 508.4
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "Chennai",
+                  "unit": "celsius"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 508.2
+              }
+            ],
+            "latency_ms": 508.2
+          }
+        ]
+      },
+      {
+        "id": "s-docs",
+        "category": "single",
+        "prompt": "Look up the documentation on CUDA streams.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "CUDA streams",
+                  "limit": "10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 493.2
+              }
+            ],
+            "latency_ms": 493.2
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "CUDA streams",
+                  "limit": "10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 486.9
+              }
+            ],
+            "latency_ms": 486.9
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "CUDA streams",
+                  "limit": "10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 486.8
+              }
+            ],
+            "latency_ms": 486.8
+          }
+        ]
+      },
+      {
+        "id": "s-file",
+        "category": "single",
+        "prompt": "Show me the contents of config.yaml",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "config.yaml"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 372.6
+              }
+            ],
+            "latency_ms": 372.6
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "config.yaml"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 368.0
+              }
+            ],
+            "latency_ms": 368.0
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "config.yaml"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 367.0
+              }
+            ],
+            "latency_ms": 367.0
+          }
+        ]
+      },
+      {
+        "id": "s-ticket",
+        "category": "single",
+        "prompt": "Please open a ticket: the printer on floor 3 is jammed. Medium priority.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "create_ticket",
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "the printer on floor 3 is jammed",
+                  "priority": "medium"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 635.8
+              }
+            ],
+            "latency_ms": 635.8
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "create_ticket",
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "the printer on floor 3 is jammed",
+                  "priority": "medium"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 630.2
+              }
+            ],
+            "latency_ms": 630.2
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "create_ticket",
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "the printer on floor 3 is jammed",
+                  "priority": "medium"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 628.3
+              }
+            ],
+            "latency_ms": 628.3
+          }
+        ]
+      },
+      {
+        "id": "s-power",
+        "category": "single",
+        "prompt": "How much is 2 to the power of 10?",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "2^10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 373.7
+              }
+            ],
+            "latency_ms": 373.7
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "2^10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 367.3
+              }
+            ],
+            "latency_ms": 367.3
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "2^10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 367.2
+              }
+            ],
+            "latency_ms": 367.2
+          }
+        ]
+      },
+      {
+        "id": "s-umbrella",
+        "category": "single",
+        "prompt": "Do I need an umbrella in London right now?",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "London",
+                  "unit": "celsius"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 493.4
+              }
+            ],
+            "latency_ms": 493.4
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "London",
+                  "unit": "celsius"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 486.6
+              }
+            ],
+            "latency_ms": 486.6
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "London",
+                  "unit": "celsius"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 487.8
+              }
+            ],
+            "latency_ms": 487.8
+          }
+        ]
+      },
+      {
+        "id": "s-ratelimit",
+        "category": "single",
+        "prompt": "What do our docs say about the rate limit?",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "rate limit",
+                  "limit": "10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 492.1
+              }
+            ],
+            "latency_ms": 492.1
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "rate limit",
+                  "limit": "10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 487.1
+              }
+            ],
+            "latency_ms": 487.1
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "rate limit",
+                  "limit": "10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 488.1
+              }
+            ],
+            "latency_ms": 488.1
+          }
+        ]
+      },
+      {
+        "id": "s-log",
+        "category": "single",
+        "prompt": "Open the file logs/error.log",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "logs/error.log"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 393.3
+              }
+            ],
+            "latency_ms": 393.3
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "logs/error.log"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 385.9
+              }
+            ],
+            "latency_ms": 385.9
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "logs/error.log"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 387.7
+              }
+            ],
+            "latency_ms": 387.7
+          }
+        ]
+      },
+      {
+        "id": "s-split",
+        "category": "single",
+        "prompt": "Split a 4500 rupee bill between 6 people. How much does each pay?",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "4500/6"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 393.8
+              }
+            ],
+            "latency_ms": 393.8
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "4500/6"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 386.2
+              }
+            ],
+            "latency_ms": 386.2
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "4500/6"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 386.5
+              }
+            ],
+            "latency_ms": 386.5
+          }
+        ]
+      },
+      {
+        "id": "a-celsius",
+        "category": "args",
+        "prompt": "Weather in Tokyo in celsius please.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "Tokyo",
+                  "unit": "celsius"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 511.1
+              }
+            ],
+            "latency_ms": 511.1
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "Tokyo",
+                  "unit": "celsius"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 505.1
+              }
+            ],
+            "latency_ms": 505.1
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "Tokyo",
+                  "unit": "celsius"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 506.8
+              }
+            ],
+            "latency_ms": 506.8
+          }
+        ]
+      },
+      {
+        "id": "a-fahrenheit",
+        "category": "args",
+        "prompt": "Give me the temperature in Dubai in fahrenheit.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "Dubai",
+                  "unit": "fahrenheit"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 513.5
+              }
+            ],
+            "latency_ms": 513.5
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "Dubai",
+                  "unit": "fahrenheit"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 507.9
+              }
+            ],
+            "latency_ms": 507.9
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "get_weather",
+                "got_args": {
+                  "city": "Dubai",
+                  "unit": "fahrenheit"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 508.1
+              }
+            ],
+            "latency_ms": 508.1
+          }
+        ]
+      },
+      {
+        "id": "a-limit-2",
+        "category": "args",
+        "prompt": "Search the docs for 'memory leak', top 2 results only.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "memory leak",
+                  "limit": "2"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 495.1
+              }
+            ],
+            "latency_ms": 495.1
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "memory leak",
+                  "limit": "2"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 487.8
+              }
+            ],
+            "latency_ms": 487.8
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "memory leak",
+                  "limit": "2"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 487.6
+              }
+            ],
+            "latency_ms": 487.6
+          }
+        ]
+      },
+      {
+        "id": "a-limit-10",
+        "category": "args",
+        "prompt": "Find 10 doc pages mentioning 'quantization'.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "quantization",
+                  "limit": "10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 493.2
+              }
+            ],
+            "latency_ms": 493.2
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "quantization",
+                  "limit": "10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 487.1
+              }
+            ],
+            "latency_ms": 487.1
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "quantization",
+                  "limit": "10"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 486.8
+              }
+            ],
+            "latency_ms": 486.8
+          }
+        ]
+      },
+      {
+        "id": "a-ticket-high",
+        "category": "args",
+        "prompt": "Critical: the payments API is down. Open a high priority ticket titled 'Payments API down'.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "create_ticket",
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "Payments API down",
+                  "priority": "high"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 514.4
+              }
+            ],
+            "latency_ms": 514.4
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "create_ticket",
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "Payments API down",
+                  "priority": "high"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 507.6
+              }
+            ],
+            "latency_ms": 507.6
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "create_ticket",
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "Payments API down",
+                  "priority": "high"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 508.8
+              }
+            ],
+            "latency_ms": 508.8
+          }
+        ]
+      },
+      {
+        "id": "a-ticket-low",
+        "category": "args",
+        "prompt": "Minor thing, there's a typo on the About page. Low priority ticket, title 'Typo on About page'.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "create_ticket",
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "Typo on About page",
+                  "priority": "low"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 554.1
+              }
+            ],
+            "latency_ms": 554.1
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "create_ticket",
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "Typo on About page",
+                  "priority": "low"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 548.5
+              }
+            ],
+            "latency_ms": 548.5
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "create_ticket",
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "Typo on About page",
+                  "priority": "low"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 550.0
+              }
+            ],
+            "latency_ms": 550.0
+          }
+        ]
+      },
+      {
+        "id": "a-precedence",
+        "category": "args",
+        "prompt": "Calculate 3 + 4 * 5",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "3 + 4 * 5"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 452.1
+              }
+            ],
+            "latency_ms": 452.1
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "3 + 4 * 5"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 446.8
+              }
+            ],
+            "latency_ms": 446.8
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "3 + 4 * 5"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 446.7
+              }
+            ],
+            "latency_ms": 446.7
+          }
+        ]
+      },
+      {
+        "id": "a-parens",
+        "category": "args",
+        "prompt": "Calculate (3 + 4) * 5",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "(3 + 4) * 5"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 473.4
+              }
+            ],
+            "latency_ms": 473.4
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "(3 + 4) * 5"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 468.2
+              }
+            ],
+            "latency_ms": 468.2
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "(3 + 4) * 5"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 467.1
+              }
+            ],
+            "latency_ms": 467.1
+          }
+        ]
+      },
+      {
+        "id": "a-abspath",
+        "category": "args",
+        "prompt": "Read the file at /etc/app/settings.json",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "/etc/app/settings.json"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 412.4
+              }
+            ],
+            "latency_ms": 412.4
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "/etc/app/settings.json"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 406.5
+              }
+            ],
+            "latency_ms": 406.5
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "/etc/app/settings.json"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 406.8
+              }
+            ],
+            "latency_ms": 406.8
+          }
+        ]
+      },
+      {
+        "id": "a-percent",
+        "category": "args",
+        "prompt": "What is 7.5% of 2400?",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "7.5% * 2400"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 473.1
+              }
+            ],
+            "latency_ms": 473.1
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "7.5% * 2400"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 467.1
+              }
+            ],
+            "latency_ms": 467.1
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "7.5% * 2400"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 466.9
+              }
+            ],
+            "latency_ms": 466.9
+          }
+        ]
+      },
+      {
+        "id": "n-greet",
+        "category": "no_tool",
+        "prompt": "Good morning!",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "1+2*3"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 455.9
+              }
+            ],
+            "latency_ms": 455.9
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "1+2*3"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 423.6
+              }
+            ],
+            "latency_ms": 423.6
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "1+2*3"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 427.8
+              }
+            ],
+            "latency_ms": 427.8
+          }
+        ]
+      },
+      {
+        "id": "n-poem",
+        "category": "no_tool",
+        "prompt": "Write a two-line poem about the monsoon.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "Poem about monsoon"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 410.9
+              }
+            ],
+            "latency_ms": 410.9
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "Poem about monsoon"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 405.4
+              }
+            ],
+            "latency_ms": 405.4
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "Poem about monsoon"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 405.7
+              }
+            ],
+            "latency_ms": 405.7
+          }
+        ]
+      },
+      {
+        "id": "n-explain",
+        "category": "no_tool",
+        "prompt": "Explain in one sentence what a GPU is.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "__malformed__",
+                "got_args": null,
+                "tool_ok": false,
+                "json_ok": false,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                "latency_ms": 411.1
+              }
+            ],
+            "latency_ms": 411.1
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "__malformed__",
+                "got_args": null,
+                "tool_ok": false,
+                "json_ok": false,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                "latency_ms": 406.1
+              }
+            ],
+            "latency_ms": 406.1
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "__malformed__",
+                "got_args": null,
+                "tool_ok": false,
+                "json_ok": false,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                "latency_ms": 405.8
+              }
+            ],
+            "latency_ms": 405.8
+          }
+        ]
+      },
+      {
+        "id": "n-negation",
+        "category": "no_tool",
+        "prompt": "Don't open a ticket. Just tell me how I would report a bug.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "Bug Report",
+                  "priority": "high"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": true,
+                "passed": false,
+                "text": "",
+                "latency_ms": 493.8
+              }
+            ],
+            "latency_ms": 493.8
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "Bug Report",
+                  "priority": "high"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": true,
+                "passed": false,
+                "text": "",
+                "latency_ms": 487.1
+              }
+            ],
+            "latency_ms": 487.1
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "create_ticket",
+                "got_args": {
+                  "title": "Bug Report",
+                  "priority": "high"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": true,
+                "passed": false,
+                "text": "",
+                "latency_ms": 486.9
+              }
+            ],
+            "latency_ms": 486.9
+          }
+        ]
+      },
+      {
+        "id": "n-thanks",
+        "category": "no_tool",
+        "prompt": "Thanks, that's all for now.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "2+2"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 391.4
+              }
+            ],
+            "latency_ms": 391.4
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "python programming",
+                  "limit": "10"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 506.3
+              }
+            ],
+            "latency_ms": 506.3
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": null,
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "python programming",
+                  "limit": "10"
+                },
+                "tool_ok": false,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 506.9
+              }
+            ],
+            "latency_ms": 506.9
+          }
+        ]
+      },
+      {
+        "id": "c-weather-convert",
+        "category": "chain",
+        "prompt": "Get the temperature in Kochi in celsius, then use the calculator to convert it to fahrenheit.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "__malformed__",
+                "got_args": null,
+                "tool_ok": false,
+                "json_ok": false,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                "latency_ms": 1077.2
+              }
+            ],
+            "latency_ms": 1077.2
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "__malformed__",
+                "got_args": null,
+                "tool_ok": false,
+                "json_ok": false,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                "latency_ms": 1070.6
+              }
+            ],
+            "latency_ms": 1070.6
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "get_weather",
+                "got_tool": "__malformed__",
+                "got_args": null,
+                "tool_ok": false,
+                "json_ok": false,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                "latency_ms": 1063.7
+              }
+            ],
+            "latency_ms": 1063.7
+          }
+        ]
+      },
+      {
+        "id": "c-docs-then-ticket",
+        "category": "chain",
+        "prompt": "Search the docs for 'driver crash'. If nothing is found, open a medium priority ticket titled 'Driver crash undocumented'.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "__malformed__",
+                "got_args": null,
+                "tool_ok": false,
+                "json_ok": false,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                "latency_ms": 990.7
+              }
+            ],
+            "latency_ms": 990.7
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "__malformed__",
+                "got_args": null,
+                "tool_ok": false,
+                "json_ok": false,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                "latency_ms": 983.8
+              }
+            ],
+            "latency_ms": 983.8
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "__malformed__",
+                "got_args": null,
+                "tool_ok": false,
+                "json_ok": false,
+                "schema_ok": false,
+                "args_ok": false,
+                "value_ok": false,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                "latency_ms": 989.8
+              }
+            ],
+            "latency_ms": 989.8
+          }
+        ]
+      },
+      {
+        "id": "c-file-sum",
+        "category": "chain",
+        "prompt": "Read numbers.txt and add up the numbers in it.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "numbers.txt"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 372.4
+              },
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "12+30+58"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 413.2
+              }
+            ],
+            "latency_ms": 785.6
+          },
+          {
+            "seed": 1,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "numbers.txt"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 363.5
+              },
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "12+30+58"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 411.0
+              }
+            ],
+            "latency_ms": 774.5
+          },
+          {
+            "seed": 2,
+            "passed": true,
+            "steps": [
+              {
+                "want_tool": "read_file",
+                "got_tool": "read_file",
+                "got_args": {
+                  "path": "numbers.txt"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 363.9
+              },
+              {
+                "want_tool": "calculator",
+                "got_tool": "calculator",
+                "got_args": {
+                  "expression": "12+30+58"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": true,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": true,
+                "text": "",
+                "latency_ms": 411.2
+              }
+            ],
+            "latency_ms": 775.1
+          }
+        ]
+      },
+      {
+        "id": "c-docs-then-file",
+        "category": "chain",
+        "prompt": "Search the docs for 'install guide', then read the file the result points to.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "install guide",
+                  "limit": "1"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 490.4
+              }
+            ],
+            "latency_ms": 490.4
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "install guide",
+                  "limit": "1"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 487.2
+              }
+            ],
+            "latency_ms": 487.2
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "install guide",
+                  "limit": "1"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 487.0
+              }
+            ],
+            "latency_ms": 487.0
+          }
+        ]
+      },
+      {
+        "id": "c-docs-found-no-ticket",
+        "category": "chain",
+        "prompt": "Search the docs for 'reset password'. Only open a ticket if nothing is found.",
+        "runs": [
+          {
+            "seed": 0,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "reset password",
+                  "limit": "0"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 493.9
+              }
+            ],
+            "latency_ms": 493.9
+          },
+          {
+            "seed": 1,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "reset password",
+                  "limit": "0"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 487.1
+              }
+            ],
+            "latency_ms": 487.1
+          },
+          {
+            "seed": 2,
+            "passed": false,
+            "steps": [
+              {
+                "want_tool": "search_docs",
+                "got_tool": "search_docs",
+                "got_args": {
+                  "query": "reset password",
+                  "limit": "0"
+                },
+                "tool_ok": true,
+                "json_ok": true,
+                "schema_ok": false,
+                "args_ok": true,
+                "value_ok": true,
+                "unrequested_action": false,
+                "passed": false,
+                "text": "",
+                "latency_ms": 483.5
+              }
+            ],
+            "latency_ms": 483.5
+          }
+        ]
+      }
+    ],
+    "vram_mb": 3890,
+    "metrics": {
+      "pass_rate": 0.5333,
+      "tasks_all_pass": 16,
+      "tasks_flaky": 0,
+      "n_tasks": 30,
+      "unrequested_actions": 3,
+      "invalid_json": 9,
+      "schema_errors": 29,
+      "wrong_tool": 21,
+      "malformed_calls": 9,
+      "latency_p50_ms": 486.9,
+      "latency_p95_ms": 983.8,
+      "by_category": {
+        "single": 0.8,
+        "args": 0.7,
+        "no_tool": 0.0,
+        "chain": 0.2
+      }
+    }
+  },
+  "candidates": [
+    {
+      "model": "llama3b-Q4_K_M.gguf",
+      "path": "/home/christy-varghese/edgeproof/models/llama3b-Q4_K_M.gguf",
+      "size_mb": 1925.8,
+      "sha256": "6c1a2b41161032677be168d354123594c0e6e67d2b9227c84f296ad037c728ff",
+      "tasks": [
+        {
+          "id": "s-calc",
+          "category": "single",
+          "prompt": "What is 48 * 12?",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "48 * 12"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 397.8
+                }
+              ],
+              "latency_ms": 397.8
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "48 * 12"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 249.8
+                }
+              ],
+              "latency_ms": 249.8
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "48 * 12"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 248.3
+                }
+              ],
+              "latency_ms": 248.3
+            }
+          ]
+        },
+        {
+          "id": "s-weather",
+          "category": "single",
+          "prompt": "How hot is it in Chennai today?",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Chennai",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 333.2
+                }
+              ],
+              "latency_ms": 333.2
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Chennai",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 323.9
+                }
+              ],
+              "latency_ms": 323.9
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Chennai",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 324.2
+                }
+              ],
+              "latency_ms": 324.2
+            }
+          ]
+        },
+        {
+          "id": "s-docs",
+          "category": "single",
+          "prompt": "Look up the documentation on CUDA streams.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "CUDA streams",
+                    "limit": null
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 306.6
+                }
+              ],
+              "latency_ms": 306.6
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "CUDA streams",
+                    "limit": null
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 298.6
+                }
+              ],
+              "latency_ms": 298.6
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "CUDA streams",
+                    "limit": null
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 299.4
+                }
+              ],
+              "latency_ms": 299.4
+            }
+          ]
+        },
+        {
+          "id": "s-file",
+          "category": "single",
+          "prompt": "Show me the contents of config.yaml",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "read_file",
+                  "got_args": {
+                    "path": "config.yaml"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 241.4
+                }
+              ],
+              "latency_ms": 241.4
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "read_file",
+                  "got_args": {
+                    "path": "config.yaml"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 235.7
+                }
+              ],
+              "latency_ms": 235.7
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "read_file",
+                  "got_args": {
+                    "path": "config.yaml"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 234.9
+                }
+              ],
+              "latency_ms": 234.9
+            }
+          ]
+        },
+        {
+          "id": "s-ticket",
+          "category": "single",
+          "prompt": "Please open a ticket: the printer on floor 3 is jammed. Medium priority.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "create_ticket",
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "The printer on floor 3 is jammed",
+                    "priority": "medium"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 410.3
+                }
+              ],
+              "latency_ms": 410.3
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "create_ticket",
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "The printer on floor 3 is jammed",
+                    "priority": "medium"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 401.5
+                }
+              ],
+              "latency_ms": 401.5
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "create_ticket",
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "The printer on floor 3 is jammed",
+                    "priority": "medium"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 399.8
+                }
+              ],
+              "latency_ms": 399.8
+            }
+          ]
+        },
+        {
+          "id": "s-power",
+          "category": "single",
+          "prompt": "How much is 2 to the power of 10?",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "2^10"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 241.7
+                }
+              ],
+              "latency_ms": 241.7
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "2^10"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 234.5
+                }
+              ],
+              "latency_ms": 234.5
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "2^10"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 235.0
+                }
+              ],
+              "latency_ms": 235.0
+            }
+          ]
+        },
+        {
+          "id": "s-umbrella",
+          "category": "single",
+          "prompt": "Do I need an umbrella in London right now?",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "London",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 316.9
+                }
+              ],
+              "latency_ms": 316.9
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "London",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 310.7
+                }
+              ],
+              "latency_ms": 310.7
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "London",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 311.1
+                }
+              ],
+              "latency_ms": 311.1
+            }
+          ]
+        },
+        {
+          "id": "s-ratelimit",
+          "category": "single",
+          "prompt": "What do our docs say about the rate limit?",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "rate limit",
+                    "limit": "10"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 317.6
+                }
+              ],
+              "latency_ms": 317.6
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "rate limit",
+                    "limit": "10"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 310.8
+                }
+              ],
+              "latency_ms": 310.8
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "rate limit",
+                    "limit": "10"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 311.0
+                }
+              ],
+              "latency_ms": 311.0
+            }
+          ]
+        },
+        {
+          "id": "s-log",
+          "category": "single",
+          "prompt": "Open the file logs/error.log",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "read_file",
+                  "got_args": {
+                    "path": "logs/error.log"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 253.9
+                }
+              ],
+              "latency_ms": 253.9
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "read_file",
+                  "got_args": {
+                    "path": "logs/error.log"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 247.1
+                }
+              ],
+              "latency_ms": 247.1
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "read_file",
+                  "got_args": {
+                    "path": "logs/error.log"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 246.5
+                }
+              ],
+              "latency_ms": 246.5
+            }
+          ]
+        },
+        {
+          "id": "s-split",
+          "category": "single",
+          "prompt": "Split a 4500 rupee bill between 6 people. How much does each pay?",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "4500/6"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 254.0
+                }
+              ],
+              "latency_ms": 254.0
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "4500/6"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 246.6
+                }
+              ],
+              "latency_ms": 246.6
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "4500/6"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 246.6
+                }
+              ],
+              "latency_ms": 246.6
+            }
+          ]
+        },
+        {
+          "id": "a-celsius",
+          "category": "args",
+          "prompt": "Weather in Tokyo in celsius please.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Tokyo",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 330.9
+                }
+              ],
+              "latency_ms": 330.9
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Tokyo",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 324.3
+                }
+              ],
+              "latency_ms": 324.3
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Tokyo",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 323.1
+                }
+              ],
+              "latency_ms": 323.1
+            }
+          ]
+        },
+        {
+          "id": "a-fahrenheit",
+          "category": "args",
+          "prompt": "Give me the temperature in Dubai in fahrenheit.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Dubai",
+                    "unit": "fahrenheit"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 329.6
+                }
+              ],
+              "latency_ms": 329.6
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Dubai",
+                    "unit": "fahrenheit"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 323.4
+                }
+              ],
+              "latency_ms": 323.4
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Dubai",
+                    "unit": "fahrenheit"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 324.2
+                }
+              ],
+              "latency_ms": 324.2
+            }
+          ]
+        },
+        {
+          "id": "a-limit-2",
+          "category": "args",
+          "prompt": "Search the docs for 'memory leak', top 2 results only.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "memory leak",
+                    "limit": "2"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 320.0
+                }
+              ],
+              "latency_ms": 320.0
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "memory leak",
+                    "limit": "2"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 311.3
+                }
+              ],
+              "latency_ms": 311.3
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "memory leak",
+                    "limit": "2"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 311.4
+                }
+              ],
+              "latency_ms": 311.4
+            }
+          ]
+        },
+        {
+          "id": "a-limit-10",
+          "category": "args",
+          "prompt": "Find 10 doc pages mentioning 'quantization'.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "quantization",
+                    "limit": "10"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 317.2
+                }
+              ],
+              "latency_ms": 317.2
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "quantization",
+                    "limit": "10"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 311.0
+                }
+              ],
+              "latency_ms": 311.0
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "quantization",
+                    "limit": "10"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 311.2
+                }
+              ],
+              "latency_ms": 311.2
+            }
+          ]
+        },
+        {
+          "id": "a-ticket-high",
+          "category": "args",
+          "prompt": "Critical: the payments API is down. Open a high priority ticket titled 'Payments API down'.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "create_ticket",
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "Payments API down",
+                    "priority": "high"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 331.7
+                }
+              ],
+              "latency_ms": 331.7
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "create_ticket",
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "Payments API down",
+                    "priority": "high"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 324.6
+                }
+              ],
+              "latency_ms": 324.6
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "create_ticket",
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "Payments API down",
+                    "priority": "high"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 324.1
+                }
+              ],
+              "latency_ms": 324.1
+            }
+          ]
+        },
+        {
+          "id": "a-ticket-low",
+          "category": "args",
+          "prompt": "Minor thing, there's a typo on the About page. Low priority ticket, title 'Typo on About page'.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "create_ticket",
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "Typo on About page",
+                    "priority": "low"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 357.9
+                }
+              ],
+              "latency_ms": 357.9
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "create_ticket",
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "Typo on About page",
+                    "priority": "low"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 348.8
+                }
+              ],
+              "latency_ms": 348.8
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "create_ticket",
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "Typo on About page",
+                    "priority": "low"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 349.5
+                }
+              ],
+              "latency_ms": 349.5
+            }
+          ]
+        },
+        {
+          "id": "a-precedence",
+          "category": "args",
+          "prompt": "Calculate 3 + 4 * 5",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "3 + 4 * 5"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 291.3
+                }
+              ],
+              "latency_ms": 291.3
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "3 + 4 * 5"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 286.1
+                }
+              ],
+              "latency_ms": 286.1
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "3 + 4 * 5"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 284.1
+                }
+              ],
+              "latency_ms": 284.1
+            }
+          ]
+        },
+        {
+          "id": "a-parens",
+          "category": "args",
+          "prompt": "Calculate (3 + 4) * 5",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "(3 + 4) * 5"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 304.5
+                }
+              ],
+              "latency_ms": 304.5
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "(3 + 4) * 5"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 297.4
+                }
+              ],
+              "latency_ms": 297.4
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "(3 + 4) * 5"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 297.8
+                }
+              ],
+              "latency_ms": 297.8
+            }
+          ]
+        },
+        {
+          "id": "a-abspath",
+          "category": "args",
+          "prompt": "Read the file at /etc/app/settings.json",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "read_file",
+                  "got_args": {
+                    "path": "/etc/app/settings.json"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 266.0
+                }
+              ],
+              "latency_ms": 266.0
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "read_file",
+                  "got_args": {
+                    "path": "/etc/app/settings.json"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 259.8
+                }
+              ],
+              "latency_ms": 259.8
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "read_file",
+                  "got_args": {
+                    "path": "/etc/app/settings.json"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 259.3
+                }
+              ],
+              "latency_ms": 259.3
+            }
+          ]
+        },
+        {
+          "id": "a-percent",
+          "category": "args",
+          "prompt": "What is 7.5% of 2400?",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "7.5% of 2400"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 304.9
+                }
+              ],
+              "latency_ms": 304.9
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "7.5% of 2400"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 298.9
+                }
+              ],
+              "latency_ms": 298.9
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "7.5% of 2400"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 297.4
+                }
+              ],
+              "latency_ms": 297.4
+            }
+          ]
+        },
+        {
+          "id": "n-greet",
+          "category": "no_tool",
+          "prompt": "Good morning!",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "Morning",
+                    "limit": "10"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 320.8
+                }
+              ],
+              "latency_ms": 320.8
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "Morning",
+                    "limit": "10"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 310.4
+                }
+              ],
+              "latency_ms": 310.4
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "Morning",
+                    "limit": "10"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 310.3
+                }
+              ],
+              "latency_ms": 310.3
+            }
+          ]
+        },
+        {
+          "id": "n-poem",
+          "category": "no_tool",
+          "prompt": "Write a two-line poem about the monsoon.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "monsoon poem",
+                    "limit": "2"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 329.7
+                }
+              ],
+              "latency_ms": 329.7
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "monsoon poem",
+                    "limit": "2"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 323.1
+                }
+              ],
+              "latency_ms": 323.1
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "monsoon poem",
+                    "limit": "2"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 323.8
+                }
+              ],
+              "latency_ms": 323.8
+            }
+          ]
+        },
+        {
+          "id": "n-explain",
+          "category": "no_tool",
+          "prompt": "Explain in one sentence what a GPU is.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "__malformed__",
+                  "got_args": null,
+                  "tool_ok": false,
+                  "json_ok": false,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                  "latency_ms": 291.3
+                }
+              ],
+              "latency_ms": 291.3
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "__malformed__",
+                  "got_args": null,
+                  "tool_ok": false,
+                  "json_ok": false,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                  "latency_ms": 285.8
+                }
+              ],
+              "latency_ms": 285.8
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "__malformed__",
+                  "got_args": null,
+                  "tool_ok": false,
+                  "json_ok": false,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                  "latency_ms": 284.9
+                }
+              ],
+              "latency_ms": 284.9
+            }
+          ]
+        },
+        {
+          "id": "n-negation",
+          "category": "no_tool",
+          "prompt": "Don't open a ticket. Just tell me how I would report a bug.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "Bug Report",
+                    "priority": "medium"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": true,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 318.5
+                }
+              ],
+              "latency_ms": 318.5
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "Bug Report",
+                    "priority": "medium"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": true,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 311.0
+                }
+              ],
+              "latency_ms": 311.0
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "create_ticket",
+                  "got_args": {
+                    "title": "Bug Report",
+                    "priority": "medium"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": true,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 311.0
+                }
+              ],
+              "latency_ms": 311.0
+            }
+          ]
+        },
+        {
+          "id": "n-thanks",
+          "category": "no_tool",
+          "prompt": "Thanks, that's all for now.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "python programming",
+                    "limit": "10"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 330.0
+                }
+              ],
+              "latency_ms": 330.0
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "python programming",
+                    "limit": "10"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 323.6
+                }
+              ],
+              "latency_ms": 323.6
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": null,
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "python programming",
+                    "limit": "10"
+                  },
+                  "tool_ok": false,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 324.2
+                }
+              ],
+              "latency_ms": 324.2
+            }
+          ]
+        },
+        {
+          "id": "c-weather-convert",
+          "category": "chain",
+          "prompt": "Get the temperature in Kochi in celsius, then use the calculator to convert it to fahrenheit.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Kochi",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 344.3
+                },
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "30 * 9/5 + 32"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 323.0
+                }
+              ],
+              "latency_ms": 667.2
+            },
+            {
+              "seed": 1,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Kochi",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 336.8
+                },
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "30 * 9/5 + 32"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 322.0
+                }
+              ],
+              "latency_ms": 658.8
+            },
+            {
+              "seed": 2,
+              "passed": true,
+              "steps": [
+                {
+                  "want_tool": "get_weather",
+                  "got_tool": "get_weather",
+                  "got_args": {
+                    "city": "Kochi",
+                    "unit": "celsius"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 336.9
+                },
+                {
+                  "want_tool": "calculator",
+                  "got_tool": "calculator",
+                  "got_args": {
+                    "expression": "30 * 9/5 + 32"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": true,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": true,
+                  "text": "",
+                  "latency_ms": 322.0
+                }
+              ],
+              "latency_ms": 658.9
+            }
+          ]
+        },
+        {
+          "id": "c-docs-then-ticket",
+          "category": "chain",
+          "prompt": "Search the docs for 'driver crash'. If nothing is found, open a medium priority ticket titled 'Driver crash undocumented'.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "__malformed__",
+                  "got_args": null,
+                  "tool_ok": false,
+                  "json_ok": false,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                  "latency_ms": 640.0
+                }
+              ],
+              "latency_ms": 640.0
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "__malformed__",
+                  "got_args": null,
+                  "tool_ok": false,
+                  "json_ok": false,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                  "latency_ms": 632.0
+                }
+              ],
+              "latency_ms": 632.0
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "__malformed__",
+                  "got_args": null,
+                  "tool_ok": false,
+                  "json_ok": false,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                  "latency_ms": 630.9
+                }
+              ],
+              "latency_ms": 630.9
+            }
+          ]
+        },
+        {
+          "id": "c-file-sum",
+          "category": "chain",
+          "prompt": "Read numbers.txt and add up the numbers in it.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "__malformed__",
+                  "got_args": null,
+                  "tool_ok": false,
+                  "json_ok": false,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                  "latency_ms": 291.5
+                }
+              ],
+              "latency_ms": 291.5
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "__malformed__",
+                  "got_args": null,
+                  "tool_ok": false,
+                  "json_ok": false,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                  "latency_ms": 285.6
+                }
+              ],
+              "latency_ms": 285.6
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "read_file",
+                  "got_tool": "__malformed__",
+                  "got_args": null,
+                  "tool_ok": false,
+                  "json_ok": false,
+                  "schema_ok": false,
+                  "args_ok": false,
+                  "value_ok": false,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "[malformed tool call] {\"error\":{\"code\":500,\"message\":\"The model produced output that does not match the expected peg-native format\",\"type\":\"server_error\"}}",
+                  "latency_ms": 285.1
+                }
+              ],
+              "latency_ms": 285.1
+            }
+          ]
+        },
+        {
+          "id": "c-docs-then-file",
+          "category": "chain",
+          "prompt": "Search the docs for 'install guide', then read the file the result points to.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "install guide",
+                    "limit": "1"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 317.8
+                }
+              ],
+              "latency_ms": 317.8
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "install guide",
+                    "limit": "1"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 310.7
+                }
+              ],
+              "latency_ms": 310.7
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "install guide",
+                    "limit": "1"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 310.8
+                }
+              ],
+              "latency_ms": 310.8
+            }
+          ]
+        },
+        {
+          "id": "c-docs-found-no-ticket",
+          "category": "chain",
+          "prompt": "Search the docs for 'reset password'. Only open a ticket if nothing is found.",
+          "runs": [
+            {
+              "seed": 0,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "reset password",
+                    "limit": "0"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 318.0
+                }
+              ],
+              "latency_ms": 318.0
+            },
+            {
+              "seed": 1,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "reset password",
+                    "limit": "0"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 310.5
+                }
+              ],
+              "latency_ms": 310.5
+            },
+            {
+              "seed": 2,
+              "passed": false,
+              "steps": [
+                {
+                  "want_tool": "search_docs",
+                  "got_tool": "search_docs",
+                  "got_args": {
+                    "query": "reset password",
+                    "limit": "0"
+                  },
+                  "tool_ok": true,
+                  "json_ok": true,
+                  "schema_ok": false,
+                  "args_ok": true,
+                  "value_ok": true,
+                  "unrequested_action": false,
+                  "passed": false,
+                  "text": "",
+                  "latency_ms": 310.8
+                }
+              ],
+              "latency_ms": 310.8
+            }
+          ]
+        }
+      ],
+      "vram_mb": 2556,
+      "metrics": {
+        "pass_rate": 0.5333,
+        "tasks_all_pass": 16,
+        "tasks_flaky": 0,
+        "n_tasks": 30,
+        "unrequested_actions": 3,
+        "invalid_json": 9,
+        "schema_errors": 36,
+        "wrong_tool": 21,
+        "malformed_calls": 9,
+        "latency_p50_ms": 311.0,
+        "latency_p95_ms": 399.8,
+        "by_category": {
+          "single": 0.8,
+          "args": 0.7,
+          "no_tool": 0.0,
+          "chain": 0.2
+        }
+      },
+      "values": {
+        "pass_rate": 0.5333,
+        "tasks_all_pass": 16,
+        "tasks_flaky": 0,
+        "n_tasks": 30,
+        "unrequested_actions": 3,
+        "invalid_json": 9,
+        "schema_errors": 36,
+        "wrong_tool": 21,
+        "malformed_calls": 9,
+        "latency_p50_ms": 311.0,
+        "latency_p95_ms": 399.8,
+        "by_category": {
+          "single": 0.8,
+          "args": 0.7,
+          "no_tool": 0.0,
+          "chain": 0.2
+        },
+        "reference_pass_rate": 0.5333,
+        "pass_rate_drop": 0.0,
+        "unrequested_actions_increase": 0,
+        "invalid_json_increase": 0,
+        "regressions": 1,
+        "regressed_tasks": [
+          "c-file-sum"
+        ],
+        "improved_tasks": [
+          "c-weather-convert"
+        ],
+        "latency_p95_ratio": 0.406,
+        "vram_mb": 2556,
+        "size_mb": 1925.8
+      },
+      "verdict": "REVIEW",
+      "notes": [
+        {
+          "metric": "unrequested_actions",
+          "value": 3,
+          "level": "REVIEW",
+          "why": "max 0"
+        },
+        {
+          "metric": "regressions",
+          "value": 1,
+          "level": "REVIEW",
+          "why": "max 0"
+        }
+      ]
+    }
+  ],
+  "env": {
+    "gpu": "NVIDIA GeForce RTX 4050 Laptop GPU, 580.178.04, 6141 MiB",
+    "llama_cpp": "a691b23",
+    "python": "3.12.3",
+    "host": "Linux-7.0.0-42-generic-x86_64-with-glibc2.39",
+    "time": "2026-11-08T17:17:16"
+  }
+}

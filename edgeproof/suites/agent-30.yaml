@@ -1,0 +1,133 @@
+name: agent-30
+# 30 hand-checked tool-calling tasks: 10 single, 10 args, 5 no_tool, 5 chain.
+temperature: 0
+repeats: 3
+system: You are a helpful assistant. Use a tool only when the user's request needs it.
+
+tools:
+  - name: calculator
+    description: Evaluate an arithmetic expression
+    parameters:
+      type: object
+      properties: {expression: {type: string}}
+      required: [expression]
+  - name: get_weather
+    description: Current weather for a city
+    parameters:
+      type: object
+      properties:
+        city: {type: string}
+        unit: {type: string, enum: [celsius, fahrenheit]}
+      required: [city]
+  - name: search_docs
+    description: Search the internal documentation
+    parameters:
+      type: object
+      properties:
+        query: {type: string}
+        limit: {type: integer}
+      required: [query]
+  - name: read_file
+    description: Read a text file from the project
+    parameters:
+      type: object
+      properties: {path: {type: string}}
+      required: [path]
+  - name: create_ticket
+    description: Open a support ticket
+    side_effect: true
+    parameters:
+      type: object
+      properties:
+        title: {type: string}
+        priority: {type: string, enum: [low, medium, high]}
+      required: [title, priority]
+
+tasks:
+  # ---- single: pick the right tool (10)
+  - {id: s-calc, category: single, prompt: "What is 48 * 12?",
+     expect: {tool: calculator, value: {arg: expression, equals: 576}}}
+  - {id: s-weather, category: single, prompt: "How hot is it in Chennai today?",
+     expect: {tool: get_weather, args: {city: Chennai}}}
+  - {id: s-docs, category: single, prompt: "Look up the documentation on CUDA streams.",
+     expect: {tool: search_docs, contains: {query: cuda stream}}}
+  - {id: s-file, category: single, prompt: "Show me the contents of config.yaml",
+     expect: {tool: read_file, contains: {path: config.yaml}}}
+  - {id: s-ticket, category: single, prompt: "Please open a ticket: the printer on floor 3 is jammed. Medium priority.",
+     expect: {tool: create_ticket, args: {priority: medium}, contains: {title: printer}}}
+  - {id: s-power, category: single, prompt: "How much is 2 to the power of 10?",
+     expect: {tool: calculator, value: {arg: expression, equals: 1024}}}
+  - {id: s-umbrella, category: single, prompt: "Do I need an umbrella in London right now?",
+     expect: {tool: get_weather, args: {city: London}}}
+  - {id: s-ratelimit, category: single, prompt: "What do our docs say about the rate limit?",
+     expect: {tool: search_docs, contains: {query: rate limit}}}
+  - {id: s-log, category: single, prompt: "Open the file logs/error.log",
+     expect: {tool: read_file, contains: {path: logs/error.log}}}
+  - {id: s-split, category: single, prompt: "Split a 4500 rupee bill between 6 people. How much does each pay?",
+     expect: {tool: calculator, value: {arg: expression, equals: 750}}}
+
+  # ---- args: exact arguments matter (10)
+  - {id: a-celsius, category: args, prompt: "Weather in Tokyo in celsius please.",
+     expect: {tool: get_weather, args: {city: Tokyo, unit: celsius}}}
+  - {id: a-fahrenheit, category: args, prompt: "Give me the temperature in Dubai in fahrenheit.",
+     expect: {tool: get_weather, args: {city: Dubai, unit: fahrenheit}}}
+  - {id: a-limit-2, category: args, prompt: "Search the docs for 'memory leak', top 2 results only.",
+     expect: {tool: search_docs, args: {limit: 2}, contains: {query: memory leak}}}
+  - {id: a-limit-10, category: args, prompt: "Find 10 doc pages mentioning 'quantization'.",
+     expect: {tool: search_docs, args: {limit: 10}, contains: {query: quantization}}}
+  - {id: a-ticket-high, category: args, prompt: "Critical: the payments API is down. Open a high priority ticket titled 'Payments API down'.",
+     expect: {tool: create_ticket, args: {priority: high, title: Payments API down}}}
+  - {id: a-ticket-low, category: args, prompt: "Minor thing, there's a typo on the About page. Low priority ticket, title 'Typo on About page'.",
+     expect: {tool: create_ticket, args: {priority: low, title: Typo on About page}}}
+  - {id: a-precedence, category: args, prompt: "Calculate 3 + 4 * 5",
+     expect: {tool: calculator, value: {arg: expression, equals: 23}}}
+  - {id: a-parens, category: args, prompt: "Calculate (3 + 4) * 5",
+     expect: {tool: calculator, value: {arg: expression, equals: 35}}}
+  - {id: a-abspath, category: args, prompt: "Read the file at /etc/app/settings.json",
+     expect: {tool: read_file, args: {path: /etc/app/settings.json}}}
+  - {id: a-percent, category: args, prompt: "What is 7.5% of 2400?",
+     expect: {tool: calculator, value: {arg: expression, equals: 180}}}
+
+  # ---- no_tool: answer directly; calling create_ticket here is an unrequested action (5)
+  - {id: n-greet, category: no_tool, prompt: "Good morning!", expect: {tool: null}}
+  - {id: n-poem, category: no_tool, prompt: "Write a two-line poem about the monsoon.", expect: {tool: null}}
+  - {id: n-explain, category: no_tool, prompt: "Explain in one sentence what a GPU is.", expect: {tool: null}}
+  - {id: n-negation, category: no_tool, prompt: "Don't open a ticket. Just tell me how I would report a bug.", expect: {tool: null}}
+  - {id: n-thanks, category: no_tool, prompt: "Thanks, that's all for now.", expect: {tool: null}}
+
+  # ---- chain: use a tool result to take the next step (5)
+  - id: c-weather-convert
+    category: chain
+    prompt: Get the temperature in Kochi in celsius, then use the calculator to convert it to fahrenheit.
+    steps:
+      - expect: {tool: get_weather, args: {city: Kochi}}
+        mock_result: {city: Kochi, temperature: 30, unit: celsius}
+      - expect: {tool: calculator, value: {arg: expression, equals: 86}}
+  - id: c-docs-then-ticket
+    category: chain
+    prompt: Search the docs for 'driver crash'. If nothing is found, open a medium priority ticket titled 'Driver crash undocumented'.
+    steps:
+      - expect: {tool: search_docs, contains: {query: driver crash}}
+        mock_result: {results: []}
+      - expect: {tool: create_ticket, args: {priority: medium, title: Driver crash undocumented}}
+  - id: c-file-sum
+    category: chain
+    prompt: Read numbers.txt and add up the numbers in it.
+    steps:
+      - expect: {tool: read_file, contains: {path: numbers.txt}}
+        mock_result: {content: "12\n30\n58"}
+      - expect: {tool: calculator, value: {arg: expression, equals: 100}}
+  - id: c-docs-then-file
+    category: chain
+    prompt: Search the docs for 'install guide', then read the file the result points to.
+    steps:
+      - expect: {tool: search_docs, contains: {query: install}}
+        mock_result: {results: [{title: Install guide, file: docs/install.md}]}
+      - expect: {tool: read_file, contains: {path: docs/install.md}}
+  - id: c-docs-found-no-ticket
+    category: chain
+    prompt: Search the docs for 'reset password'. Only open a ticket if nothing is found.
+    steps:
+      - expect: {tool: search_docs, contains: {query: reset password}}
+        mock_result: {results: [{title: Resetting your password, file: docs/reset.md}]}
+      - expect: {tool: null}

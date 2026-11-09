@@ -1,0 +1,15 @@
+family,p95_ms,pass_rate,quant,regressions,role,size_mb,unrequested_actions,verdict,vram_mb,cat_args,cat_chain,cat_no_tool,cat_single
+qwen1.5b,990.1,0.7667,F16,0,reference,3395.5,0,REF,3256,0.8,0.4,0.8,0.9
+qwen1.5b,575.7,0.7889,Q8_0,0,candidate,1806.8,0,PASS,1860,0.867,0.4,0.8,0.9
+qwen1.5b,497.9,0.7889,Q6_K,0,candidate,1396.3,0,PASS,1504,0.867,0.4,0.8,0.9
+qwen1.5b,482.3,0.7889,Q4_K_M,1,candidate,1065.6,1,FAIL,1232,0.9,0.467,0.8,0.833
+qwen1.5b,817.0,0.8,Q3_K_M,1,candidate,881.6,0,REVIEW,1078,0.9,0.2,0.8,1.0
+llama3b,983.8,0.5333,Q8_0,0,reference,3263.4,3,REF,3890,0.7,0.2,0.0,0.8
+llama3b,790.1,0.5667,Q6_K,0,candidate,2521.4,3,REVIEW,3148,0.8,0.2,0.0,0.8
+llama3b,399.8,0.5333,Q4_K_M,1,candidate,1925.8,3,REVIEW,2556,0.7,0.2,0.0,0.8
+llama3b,612.9,0.5,Q3_K_L,1,candidate,1731.3,0,FAIL,2360,0.7,0.0,0.0,0.8
+llama1b,2093.0,0.2333,F16,0,reference,2364.7,0,REF,2684,0.3,0.0,0.0,0.4
+llama1b,1199.7,0.1222,Q8_0,4,candidate,1259.9,0,FAIL,1560,0.167,0.0,0.0,0.2
+llama1b,771.8,0.3889,Q6_K,1,candidate,974.5,0,REVIEW,1274,0.5,0.0,0.0,0.667
+llama1b,642.8,0.4333,Q4_K_M,1,candidate,770.3,0,REVIEW,1072,0.5,0.0,0.0,0.8
+llama1b,20595.9,0.1333,Q3_K_M,4,candidate,658.8,0,FAIL,960,0.2,0.0,0.0,0.2
